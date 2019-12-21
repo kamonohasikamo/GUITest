@@ -57,5 +57,16 @@ class Form1 : Form
         this.BackColor = SystemColors.Window; // 背景色の設定
         // this.BackColor = Color.Blue;
         this.ClientSize = new Size(300, 200); // クライアント領域のサイズ
+        
+        // ウィンドウの出現位置
+        this.StartPosition = FormStartPosition.Manual; // 位置の決定方法
+        this.Location = new Point(100, 50); // ウィンドウの位置
+
+        // 背景画像の設定
+        // bin/Debug/**.exeからの相対パス
+        Bitmap bitmap = new Bitmap(@"..\..\testImage\uma.png");
+
+        this.BackgroundImage = bitmap; // 背景画像
+        this.BackgroundImageLayout = ImageLayout.Tile; // 配置 
     }
 }
