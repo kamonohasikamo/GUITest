@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Drawing;
 using System.Windows.Forms;
 
 class Program
@@ -42,6 +43,18 @@ class Form1 : Form
     {
         // this.Text = "Hello!";
         this.Text = "Title"; // ウィンドウタイトル設定
+        /*
+        bool ControlBox	コントロールボックスを表示
+        bool MaximizeBox	最大化ボタンを表示
+        bool MinimizeBox	最小化ボタンを表示
+        bool TopMost	最前面に表示
+        */
         this.MaximizeBox = false; // 最大化ボタンを無効
+        /*
+         Color BackColor	背景色
+         Color ForeColor	前景色
+        */
+        this.BackColor = SystemColors.Window; // 背景色の設定
+        // this.BackColor = Color.Blue;
     }
 }
