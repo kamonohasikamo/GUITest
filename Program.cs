@@ -56,5 +56,6 @@ class Form1 : Form
         */
         this.BackColor = SystemColors.Window; // 背景色の設定
         // this.BackColor = Color.Blue;
+        this.ClientSize = new Size(300, 200); // クライアント領域のサイズ
     }
 }
