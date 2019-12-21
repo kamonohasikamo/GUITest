@@ -15,6 +15,7 @@ class Program
         // MessageBoxIcon icon         // アイコン
         // )
         //===============================
+        /*
         DialogResult result = MessageBox.Show(
             "[はい] か [いいえ] を選択してください。", "確認",
             // ボタンの設定
@@ -29,5 +30,16 @@ class Program
         {
             MessageBox.Show("[いいえ] が選択されました。", "結果");
         }
+        */
+        Application.Run(new Form1());
+    }
+}
+
+class Form1 : Form
+{
+    // コンストラクタ
+    public Form1()
+    {
+        this.Text = "Hello!";
     }
 }
