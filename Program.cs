@@ -40,6 +40,8 @@ class Form1 : Form
     // コンストラクタ
     public Form1()
     {
-        this.Text = "Hello!";
+        // this.Text = "Hello!";
+        this.Text = "Title"; // ウィンドウタイトル設定
+        this.MaximizeBox = false; // 最大化ボタンを無効
     }
 }
