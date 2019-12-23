@@ -33,11 +33,27 @@ class Form1 : Form
 		button.Click += new EventHandler(clickAction);
 		panel.Controls.Add(button); // buttonをPanelに追加
 		this.Controls.Add(panel); // Panelをフォームに追加
+
+		this.FormClosing += new FormClosingEventHandler(closingAction);
 	}
 	
 	void clickAction(object sender, EventArgs e)
 	{
 		clickCount++;
 		button.Text = clickCount + " 回クリックされました";
+	}
+
+	void closingAction(Object sender, FormClosingEventArgs e)
+	{
+		DialogResult result = MessageBox.Show(
+			"終了しますか？", 
+			"確認",
+			MessageBoxButtons.YesNo,
+			MessageBoxIcon.Question
+		);
+		if (result == DialogResult.No)
+		{
+			e.Cancel = true;
+		}
 	}
 }
