@@ -14,26 +14,30 @@ class Program
 
 class Form1 : Form
 {
+	int clickCount = 0; // クリック回数のカウント
 	Panel panel = new Panel(); // Panel
 	Label label1 = new Label(); // ラベルコントロール
 	Label label2 = new Label();
-	Button[] button = new Button[3];
+	Button button;
 	public Form1()
 	{
 		panel.BorderStyle = BorderStyle.FixedSingle; // 境界線
 		panel.Size = new Size(200, 200);
 		panel.Location = new Point(20, 20);
-
-		for (int i = 0; i < 3; i++) {
-			button[i] = new Button();
-			button[i].Text = "ボタン" + i;
-			button[i].Top = i * 40;
-			panel.Controls.Add(button[i]); // buttonをPanelに追加
-		}
-		button[0].Click += new EventHandler(clickAction);
+		button = new Button()
+		{
+			Text = "ボタン をクリックしてください。",
+			Location = new Point(10, 10),
+			Size = new Size(160, 40),
+		};
+		button.Click += new EventHandler(clickAction);
+		panel.Controls.Add(button); // buttonをPanelに追加
 		this.Controls.Add(panel); // Panelをフォームに追加
 	}
-	void clickAction(object sender, EventArgs e) {
-		MessageBox.Show("ボタンが押されました." + sender.GetType(), "clickAction" );
+	
+	void clickAction(object sender, EventArgs e)
+	{
+		clickCount++;
+		button.Text = clickCount + " 回クリックされました";
 	}
 }
