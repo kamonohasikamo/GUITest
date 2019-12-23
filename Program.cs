@@ -19,7 +19,7 @@ class Form1 : Form
 	Button button;
 	public Form1()
 	{
-		this.KeyDown += new KeyEventHandler(keyDownAction);
+		// this.KeyDown += new KeyEventHandler(keyDownAction);
 		// button = new Button()
 		// {
 		// 	Text = "ボタン をクリックしてください。",
@@ -31,10 +31,12 @@ class Form1 : Form
 		this.Controls.Add(button); // Panelをフォームに追加
 
 		// this.FormClosing += new FormClosingEventHandler(closingAction);
-		// label = new Label() {
-		// 	AutoSize = true
-		// };
-		// this.Controls.Add(label);
+		label = new Label() {
+			Location = new Point(100, 100),
+			AutoSize = true
+		};
+		this.Controls.Add(label);
+		this.KeyPress += new KeyPressEventHandler(inputKeys);
 		// this.MouseMove += new MouseEventHandler(mouseMoving);
 		
 	}
@@ -66,15 +68,21 @@ class Form1 : Form
 	// 	label.Text = string.Format("({0}, {1})", e.X, e.Y);
 	// }
 
-	void keyDownAction(Object sender, KeyEventArgs e)
+	// void keyDownAction(Object sender, KeyEventArgs e)
+	// {
+	// 	// ESC + Shiftを押されたら
+	// 	if ( (e.KeyCode == Keys.Escape) && e.Shift)
+	// 	{
+	// 		MessageBox.Show(
+	// 			"Shift + Esc が押されました。", "終了"
+	// 		);
+	// 		this.Close();
+	// 	}
+	// }
+
+	void inputKeys(Object sender, KeyPressEventArgs e)
 	{
-		// ESC + Shiftを押されたら
-		if ( (e.KeyCode == Keys.Escape) && e.Shift)
-		{
-			MessageBox.Show(
-				"Shift + Esc が押されました。", "終了"
-			);
-			this.Close();
-		}
+		// 入力された文字列をラベルテキストの末尾に追加
+		label.Text += e.KeyChar;
 	}
 }
