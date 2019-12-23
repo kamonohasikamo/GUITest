@@ -19,48 +19,62 @@ class Form1 : Form
 	Button button;
 	public Form1()
 	{
-		button = new Button()
-		{
-			Text = "ボタン をクリックしてください。",
-			Location = new Point(10, 10),
-			Size = new Size(160, 40),
-		};
-		button.Click += new EventHandler(clickAction);
+		this.KeyDown += new KeyEventHandler(keyDownAction);
+		// button = new Button()
+		// {
+		// 	Text = "ボタン をクリックしてください。",
+		// 	Location = new Point(10, 10),
+		// 	Size = new Size(160, 40),
+		// };
+		// button.Click += new EventHandler(clickAction);
 		this.ClientSize = new Size(500, 500);
 		this.Controls.Add(button); // Panelをフォームに追加
 
-		this.FormClosing += new FormClosingEventHandler(closingAction);
-		label = new Label() {
-			AutoSize = true
-		};
-		this.Controls.Add(label);
-		this.MouseMove += new MouseEventHandler(mouseMoving);
+		// this.FormClosing += new FormClosingEventHandler(closingAction);
+		// label = new Label() {
+		// 	AutoSize = true
+		// };
+		// this.Controls.Add(label);
+		// this.MouseMove += new MouseEventHandler(mouseMoving);
+		
 	}
 	
-	void clickAction(object sender, EventArgs e)
-	{
-		clickCount++;
-		button.Text = clickCount + " 回クリックされました";
-	}
+	// void clickAction(object sender, EventArgs e)
+	// {
+	// 	clickCount++;
+	// 	button.Text = clickCount + " 回クリックされました";
+	// }
 
-	void closingAction(Object sender, FormClosingEventArgs e)
+	// void closingAction(Object sender, FormClosingEventArgs e)
+	// {
+	// 	DialogResult result = MessageBox.Show(
+	// 		"終了しますか？", 
+	// 		"確認",
+	// 		MessageBoxButtons.YesNo,
+	// 		MessageBoxIcon.Question
+	// 	);
+	// 	if (result == DialogResult.No)
+	// 	{
+	// 		e.Cancel = true;
+	// 	}
+	// }
+	// void mouseMoving(Object sender, MouseEventArgs e)
+	// {
+	// 	// マウスと同じ位置
+	// 	label.Location = e.Location;
+	// 	// ラベルにx,y座標を表示
+	// 	label.Text = string.Format("({0}, {1})", e.X, e.Y);
+	// }
+
+	void keyDownAction(Object sender, KeyEventArgs e)
 	{
-		DialogResult result = MessageBox.Show(
-			"終了しますか？", 
-			"確認",
-			MessageBoxButtons.YesNo,
-			MessageBoxIcon.Question
-		);
-		if (result == DialogResult.No)
+		// ESC + Shiftを押されたら
+		if ( (e.KeyCode == Keys.Escape) && e.Shift)
 		{
-			e.Cancel = true;
+			MessageBox.Show(
+				"Shift + Esc が押されました。", "終了"
+			);
+			this.Close();
 		}
-	}
-	void mouseMoving(Object sender, MouseEventArgs e)
-	{
-		// マウスと同じ位置
-		label.Location = e.Location;
-		// ラベルにx,y座標を表示
-		label.Text = string.Format("({0}, {1})", e.X, e.Y);
 	}
 }
