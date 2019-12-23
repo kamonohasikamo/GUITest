@@ -30,6 +30,10 @@ class Form1 : Form
 			button[i].Top = i * 40;
 			panel.Controls.Add(button[i]); // buttonをPanelに追加
 		}
+		button[0].Click += new EventHandler(clickAction);
 		this.Controls.Add(panel); // Panelをフォームに追加
+	}
+	void clickAction(object sender, EventArgs e) {
+		MessageBox.Show("ボタンが押されました." + sender.GetType(), "clickAction" );
 	}
 }
