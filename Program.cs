@@ -14,37 +14,22 @@ class Program
 
 class Form1 : Form
 {
+	Panel panel = new Panel(); // Panel
 	Label label1 = new Label(); // ラベルコントロール
 	Label label2 = new Label();
-	Button button1 = new Button(); // ボタンコントロール
-	Button button2 = new Button(); // ボタンコントロール
-
+	Button[] button = new Button[3];
 	public Form1()
 	{
-		label1.Text = "label1";
-		label1.Location = new Point(10, 10);
-		label1.AutoSize = true;
+		panel.BorderStyle = BorderStyle.FixedSingle; // 境界線
+		panel.Size = new Size(200, 200);
+		panel.Location = new Point(20, 20);
 
-		label2.Text = "label2";
-		label2.Location = new Point(10, 30);
-		label2.AutoSize = true;
-
-		button1.Text = "button1";
-		button1.Location = new Point(10, 50);
-
-		button2.Text = "button2";
-		button2.Location = new Point(10, 80);
-
-		// コントロール群を配列にまとめて追加
-		this.Controls.AddRange(new Control[] {
-			label1, label2, button1, button2
-		});
-		/*
-			or
-			this.Controls.Add(label1);
-			this.Controls.Add(label2);
-			this.Controls.Add(button1);
-			this.Controls.Add(button2);
-		*/
+		for (int i = 0; i < 3; i++) {
+			button[i] = new Button();
+			button[i].Text = "ボタン" + i;
+			button[i].Top = i * 40;
+			panel.Controls.Add(button[i]); // buttonをPanelに追加
+		}
+		this.Controls.Add(panel); // Panelをフォームに追加
 	}
 }
