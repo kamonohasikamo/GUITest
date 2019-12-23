@@ -15,15 +15,10 @@ class Program
 class Form1 : Form
 {
 	int clickCount = 0; // クリック回数のカウント
-	Panel panel = new Panel(); // Panel
-	Label label1 = new Label(); // ラベルコントロール
-	Label label2 = new Label();
+	Label label;
 	Button button;
 	public Form1()
 	{
-		panel.BorderStyle = BorderStyle.FixedSingle; // 境界線
-		panel.Size = new Size(200, 200);
-		panel.Location = new Point(20, 20);
 		button = new Button()
 		{
 			Text = "ボタン をクリックしてください。",
@@ -31,10 +26,15 @@ class Form1 : Form
 			Size = new Size(160, 40),
 		};
 		button.Click += new EventHandler(clickAction);
-		panel.Controls.Add(button); // buttonをPanelに追加
-		this.Controls.Add(panel); // Panelをフォームに追加
+		this.ClientSize = new Size(500, 500);
+		this.Controls.Add(button); // Panelをフォームに追加
 
 		this.FormClosing += new FormClosingEventHandler(closingAction);
+		label = new Label() {
+			AutoSize = true
+		};
+		this.Controls.Add(label);
+		this.MouseMove += new MouseEventHandler(mouseMoving);
 	}
 	
 	void clickAction(object sender, EventArgs e)
@@ -55,5 +55,12 @@ class Form1 : Form
 		{
 			e.Cancel = true;
 		}
+	}
+	void mouseMoving(Object sender, MouseEventArgs e)
+	{
+		// マウスと同じ位置
+		label.Location = e.Location;
+		// ラベルにx,y座標を表示
+		label.Text = string.Format("({0}, {1})", e.X, e.Y);
 	}
 }
